@@ -259,6 +259,14 @@ namespace RC
 
             Unreal::UnrealInitializer::SetupUnrealModules();
 
+            
+            // Clean up temp dlls
+            if (std::filesystem::exists(CppMod::temp_dlls_path))
+            {
+                auto deleted = std::filesystem::remove_all(CppMod::temp_dlls_path);
+                Output::send<LogLevel::Verbose>(STR("Deleted {} temp dlls\n"), deleted);
+            }
+
             setup_mods();
             install_cpp_mods();
             start_cpp_mods();

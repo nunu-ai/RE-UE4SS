@@ -38,6 +38,8 @@ namespace RC
         ~CppMod() override;
 
       public:
+        static std::wstring temp_dlls_path;
+
         auto start_mod() -> void override;
         auto uninstall() -> void override;
 
